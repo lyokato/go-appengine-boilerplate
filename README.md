@@ -9,7 +9,7 @@ Install AppEngine SDK
 goapp get github.com/proj/library
 ```
 
-## RUN ON LOCAL
+## RUN ON LOCAL ENVIRONMENT
 
 ```
 cd ./project/
@@ -19,5 +19,6 @@ goapp serve app.yaml
 ## DEPLOY
 
 ```
-goapp deploy
+cd ./project/
+goapp deploy -application [PROJECT_ID]
 ```

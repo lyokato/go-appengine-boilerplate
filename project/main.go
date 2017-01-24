@@ -1,15 +1,15 @@
 package main
 
 import (
+	"config"
 	"net/http"
+	"server"
 
-	"github.com/labstack/echo"
+	"google.golang.org/appengine"
 )
 
 func main() {
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
-	e.Logger.Fatal(e.Start(":1323"))
+	cnf := config.LoadFromFile("static/config/dev.toml")
+	http.Handle("/", server.New(cnf))
+	appengine.Main()
 }
