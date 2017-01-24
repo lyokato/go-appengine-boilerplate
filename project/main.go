@@ -1,9 +1,10 @@
 package main
 
 import (
-	"config"
+	"app/config"
+	"app/server"
+
 	"net/http"
-	"server"
 
 	"google.golang.org/appengine"
 )
