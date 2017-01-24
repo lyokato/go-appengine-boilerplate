@@ -12,6 +12,9 @@ func New(cnf *config.Config) *gin.Engine {
 
 	r := gin.New()
 
+	r.Use(configAccessor(cnf))
+	r.Use(appEngineContextAccessor())
+
 	top_controller.Route(r.Group("/top"))
 
 	r.GET("/", func(c *gin.Context) {
