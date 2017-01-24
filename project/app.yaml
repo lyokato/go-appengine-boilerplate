@@ -1,7 +1,13 @@
-version: alpha-002
+version: alpha-004
 runtime: go
 api_version: go1
 
 handlers:
+
+- url: /favicon.ico
+  mime_type: image/x-icon
+  static_files: static/public/favicon.ico
+  upload: static/public/favicon.ico
+
 - url: /.*
   script: _go_app
