@@ -1,4 +1,4 @@
-package server
+package middleware
 
 import (
 	"app/config"
@@ -7,14 +7,14 @@ import (
 	"google.golang.org/appengine"
 )
 
-func configAccessor(cnf *config.Config) gin.HandlerFunc {
+func ConfigAccessor(cnf *config.Config) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Set("config", cnf)
 		c.Next()
 	}
 }
 
-func appEngineContextAccessor() gin.HandlerFunc {
+func AppEngineContextAccessor() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Set("aec", appengine.NewContext(c.Request))
 		c.Next()

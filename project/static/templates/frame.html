@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.cyan-orange.min.css" />
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+  <!--
+  <link rel="apple-touch-icon" href=""/>
+  <link rel="apple-touch-icon" size="57x57" href=""/>
+  <link rel="apple-touch-icon" size="72x72" href=""/>
+  <link rel="apple-touch-icon" size="76x76" href=""/>
+  <link rel="apple-touch-icon" size="114x114" href=""/>
+  <link rel="apple-touch-icon" size="120x120" href=""/>
+  <link rel="apple-touch-icon" size="144x144" href=""/>
+  <link rel="apple-touch-icon" size="152x152" href=""/>
+  <title>{{ title }}</title>
+  -->
+  {% block ogp %}
+  <meta property="og:title" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  {% endblock %}
+
+  <style>
+      body {
+        background-color: #444;
+      }
+      header {
+        background-image: linear-gradient(180deg, rgba(150, 0, 0, 1) 5%, rgba(200, 0, 0, 1) 30%, rgba(180, 0, 0, 1));
+      }
+      main {
+        background-color: #eee;
+        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 5%, rgba(200, 0, 0, 0.25) 30%, rgba(0, 0,0,0.55)), url(static/img/head.png);
+        background-position: top left;
+        background-size: cover;
+        overflow: hidden;
+      }
+      footer {
+        //background-image: linear-gradient(180deg, rgba(150, 0, 0, 1) 5%, rgba(200, 0, 0, 1) 30%, rgba(180, 0, 0, 1));
+      }
+
+      .footer > .mdl-logo {
+        margin: auto 0;
+      }
+      .footer > .mdl-mega-footer__bottom-section {
+        margin: 0 auto;
+      }
+  </style>
+  {% block style %}
+  {% endblock %}
+</head>
+<body>
+
+  <div class="mdl-layout">
+    <header class="mdl-layout__header mdl-layout__header--scroll">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">{{ title }}</span>
+        <div class="mdl-layout-spacer"></div>
+        {% if login %}
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="/logout">Logout</a>
+        </nav>
+        {% endif %}
+      </div>
+    </header>
+
+    <main class="mdl-layout__content">
+    {% block content %}
+    {% endblock %}
+    </main>
+
+    <footer class="mdl-mega-footer footer">
+      <div class="mdl-mega-footer__middle-section">
+        <div class="mdl-logo">maintained by XXX</div>
+        <div class="mdl-logo"><a href="/logout">Logout</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
+
