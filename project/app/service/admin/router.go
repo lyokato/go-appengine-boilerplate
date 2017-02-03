@@ -2,7 +2,7 @@ package admin
 
 import (
 	"app/config"
-	h "app/controller/helper"
+	h "app/controller_helper"
 	"app/middleware"
 
 	"github.com/flosch/pongo2"
@@ -13,6 +13,7 @@ import (
 func Setup(r *gin.RouterGroup, cnf *config.Config) {
 
 	r.Use(middleware.Sessions(cnf.AdminSession))
+	r.Use(authenticator("/admin/login", []string{"/admin/login"}))
 
 	r.GET("/", showIndexPage)
 	r.GET("/login", showLoginPage)
@@ -29,6 +30,7 @@ func showIndexPage(c *gin.Context) {
 }
 
 func showLoginPage(c *gin.Context) {
+
 }
 
 func login(c *gin.Context) {

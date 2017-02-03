@@ -2,7 +2,7 @@ package site
 
 import (
 	"app/config"
-	h "app/controller/helper"
+	h "app/controller_helper"
 	"app/middleware"
 
 	"github.com/flosch/pongo2"

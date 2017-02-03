@@ -1,4 +1,4 @@
-package helper
+package controller_helper
 
 import (
 	"app/template"

@@ -1,6 +1,6 @@
 package users
 
-import "errors"
+import "github.com/mjibson/goon"
 
 type User struct {
 	UserId    int    `datastore:"-" goon:"id"`
@@ -11,10 +11,10 @@ type User struct {
 	UpdatedAt int    `datastore:"updated_at,noindex"`
 }
 
-func FindById(userId int) (*User, error) {
-	return nil, errors.New("not implemented yet")
-}
-
-func FindByUsername(username string) (*User, error) {
-	return nil, errors.New("not implemented yet")
+func FindById(g goon.Goon, userId int) (*User, error) {
+	user := &User{UserId: userId}
+	if err := g.Get(user); err != nil {
+		return nil, err
+	}
+	return user, nil
 }
