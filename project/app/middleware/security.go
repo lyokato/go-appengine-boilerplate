@@ -3,7 +3,7 @@ package middleware
 import (
 	"app/config"
 
-	"github.com/gin-gonic/gin"
+	gin "gopkg.in/gin-gonic/gin.v1"
 )
 
 func TLSOnly(cnf *config.Config) gin.HandlerFunc {
@@ -13,5 +13,13 @@ func TLSOnly(cnf *config.Config) gin.HandlerFunc {
 		} else {
 			c.AbortWithStatus(400)
 		}
+	}
+}
+
+func DefaultSecureHeaders(cnf *config.Config) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Header("X-Content-Type-Options", "nosniff")
+		c.Header("X-Frame-Options", "deny")
+		c.Next()
 	}
 }

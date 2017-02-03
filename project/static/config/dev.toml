@@ -1,3 +1,18 @@
 [web]
 host = "0.0.0.0"
 port = 8080
+
+[admin_session]
+name    = 'myservice_admin'
+secret  = 'hogehoge'
+path    = ''
+domain  = ''
+max_age = 10000
+
+[site_session]
+name    = 'myservice'
+secret  = 'hogehoge'
+path    = ''
+domain  = ''
+max_age = 10000
+secure  = false

@@ -3,8 +3,8 @@ package middleware
 import (
 	"app/config"
 
-	"github.com/gin-gonic/gin"
 	"google.golang.org/appengine"
+	gin "gopkg.in/gin-gonic/gin.v1"
 )
 
 func ConfigAccessor(cnf *config.Config) gin.HandlerFunc {

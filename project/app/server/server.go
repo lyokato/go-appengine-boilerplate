@@ -2,11 +2,12 @@ package server
 
 import (
 	"app/config"
-	"app/controller/top_controller"
+	"app/controller/admin"
+	"app/controller/api"
+	"app/controller/site"
 	"app/middleware"
-	"net/http"
 
-	"github.com/gin-gonic/gin"
+	gin "gopkg.in/gin-gonic/gin.v1"
 )
 
 func New(cnf *config.Config) *gin.Engine {
@@ -19,11 +20,9 @@ func New(cnf *config.Config) *gin.Engine {
 	// TLS settins is now in app.yaml: using 'secure' parameter
 	// r.Use(middleware.TLSOnly(cnf))
 
-	top_controller.Route(r.Group("/top"))
-
-	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, cnf.Web.Address())
-	})
+	admin.Setup(r.Group("/admin"), cnf)
+	api.Setup(r.Group("/api"), cnf)
+	site.Setup(r.Group("/site"), cnf)
 
 	return r
 }

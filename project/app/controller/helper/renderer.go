@@ -4,7 +4,7 @@ import (
 	"app/template"
 
 	"github.com/flosch/pongo2"
-	"github.com/gin-gonic/gin"
+	gin "gopkg.in/gin-gonic/gin.v1"
 
 	"google.golang.org/appengine/log"
 )

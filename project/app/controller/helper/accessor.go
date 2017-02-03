@@ -3,8 +3,8 @@ package helper
 import (
 	"app/config"
 
-	"github.com/gin-gonic/gin"
 	"golang.org/x/net/context"
+	gin "gopkg.in/gin-gonic/gin.v1"
 )
 
 // Get Config Struct

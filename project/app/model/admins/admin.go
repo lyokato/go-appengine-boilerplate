@@ -1,4 +1,4 @@
-package admin
+package admins
 
 type Admin struct {
 }
