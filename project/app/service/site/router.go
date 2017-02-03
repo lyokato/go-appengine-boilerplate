@@ -19,7 +19,7 @@ func Setup(r *gin.RouterGroup, cnf *config.Config) {
 
 func showIndexPage(c *gin.Context) {
 
-	log.Infof(h.CTX(c), "site::top::showIndexPage")
+	log.Infof(h.CTX(c), "[site] index")
 
 	h.Render(c, "site/index.html",
 		pongo2.Context{"title": "Hello, World"})

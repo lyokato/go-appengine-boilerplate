@@ -13,6 +13,10 @@ type WebConfig struct {
 	Port int    `toml:"port"`
 }
 
+func (wc *WebConfig) Address() string {
+	return fmt.Sprintf("%s:%d", wc.Host, wc.Port)
+}
+
 type SessionConfig struct {
 	Name   string `toml:"name"`
 	Secret string `toml:"secret"`
@@ -20,8 +24,4 @@ type SessionConfig struct {
 	Domain string `toml:"domain"`
 	MaxAge int    `toml:"max_age"`
 	Secure bool   `toml:"secure"`
-}
-
-func (wc *WebConfig) Address() string {
-	return fmt.Sprintf("%s:%d", wc.Host, wc.Port)
 }

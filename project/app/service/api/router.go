@@ -16,7 +16,7 @@ func Setup(r *gin.RouterGroup, cnf *config.Config) {
 
 func showIndex(c *gin.Context) {
 
-	log.Infof(h.CTX(c), "api::top::showIndex")
+	log.Infof(h.CTX(c), "[api] index")
 
 	c.JSON(http.StatusOK, gin.H{"message": "hello, world"})
 }

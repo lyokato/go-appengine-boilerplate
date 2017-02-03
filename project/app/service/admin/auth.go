@@ -32,7 +32,6 @@ func authenticator(fallbackPath string,
 		admin_id, ok := value.(int)
 
 		if !ok {
-
 			// save destination
 			log.Infof(ch.CTX(c), "session not found")
 
