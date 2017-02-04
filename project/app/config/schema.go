@@ -4,8 +4,13 @@ import "fmt"
 
 type Config struct {
 	Web          *WebConfig     `toml:"web"`
+	Admin        *AdminConfig   `toml:"admin"`
 	AdminSession *SessionConfig `toml:"admin_session"`
 	SiteSession  *SessionConfig `toml:"site_session"`
+}
+
+type AdminConfig struct {
+	InitialAccount string `toml:"initial_account"`
 }
 
 type WebConfig struct {

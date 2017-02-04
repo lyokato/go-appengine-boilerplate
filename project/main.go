@@ -20,6 +20,7 @@ func setupEngine(cnf *config.Config) *gin.Engine {
 
 	r.Use(middleware.ConfigAccessor(cnf))
 	r.Use(middleware.AppEngineContextAccessor())
+	r.Use(middleware.GoonAccessor())
 
 	// TLS settins is now in app.yaml: using 'secure' parameter
 	// r.Use(middleware.TLSOnly(cnf))

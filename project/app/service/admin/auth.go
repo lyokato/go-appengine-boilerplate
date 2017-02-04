@@ -29,11 +29,11 @@ func authenticator(fallbackPath string,
 		sess := sessions.Default(c)
 
 		value := sess.Get(SessionKeyLoginAdminId)
-		admin_id, ok := value.(int)
+		admin_id, ok := value.(int64)
 
 		if !ok {
 			// save destination
-			log.Infof(ch.CTX(c), "session not found")
+			log.Infof(ch.CTX(c), "[admin] session not found")
 
 			c.Redirect(http.StatusFound, fallbackPath)
 			c.Abort()
@@ -42,7 +42,7 @@ func authenticator(fallbackPath string,
 
 		admin, err := admins.FindById(ch.GOON(c), admin_id)
 		if err != nil {
-			log.Infof(ch.CTX(c), "invalid session")
+			log.Infof(ch.CTX(c), "[admin] invalid session")
 
 			sess.Delete(SessionKeyLoginAdminId)
 			sess.Save()

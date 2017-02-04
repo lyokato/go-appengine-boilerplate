@@ -10,10 +10,11 @@ import (
 func Setup(r *gin.RouterGroup, cnf *config.Config) {
 
 	r.Use(middleware.Sessions(cnf.AdminSession))
-	r.Use(authenticator("/admin/signin", []string{"/admin/signin"}))
+	r.Use(authenticator("/admin/sign_in", []string{"/admin/sign_in", "/admin/sign_in_cb"}))
 
 	r.GET("/", showIndexPage)
-	r.GET("/signin", showSignInPage)
-	r.POST("/signin", signIn)
-	r.GET("/signout", signOut)
+	r.GET("/sign_in", signIn)
+	r.GET("/sign_in_cb", signInCallback)
+	r.GET("/sign_out", signOut)
+	r.GET("/sign_out_cb", signOutCallback)
 }

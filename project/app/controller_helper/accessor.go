@@ -19,6 +19,6 @@ func CTX(c *gin.Context) context.Context {
 	return c.MustGet("aec").(context.Context)
 }
 
-func GOON(c *gin.Context) goon.Goon {
-	return c.MustGet("goon").(goon.Goon)
+func GOON(c *gin.Context) *goon.Goon {
+	return c.MustGet("goon").(*goon.Goon)
 }

@@ -2,6 +2,9 @@
 host = "0.0.0.0"
 port = 8080
 
+[admin]
+initial_account = "lyo.kato@gmail.com"
+
 [admin_session]
 name    = 'myservice_admin'
 secret  = 'hogehoge'
