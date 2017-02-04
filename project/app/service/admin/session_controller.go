@@ -16,7 +16,7 @@ import (
 func showIndexPage(c *gin.Context) {
 	log.Infof(h.CTX(c), "[admin] show_index")
 
-	msg := fmt.Sprintf("Hello, %s", ADMIN(c).Username)
+	msg := fmt.Sprintf("Hello, %s", ADMIN(c).Email)
 
 	h.Render(c, "admin/index.html",
 		pongo2.Context{"title": msg})

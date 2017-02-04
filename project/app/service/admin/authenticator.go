@@ -11,11 +11,6 @@ import (
 	gin "gopkg.in/gin-gonic/gin.v1"
 )
 
-const (
-	SessionKeyLoginAdminId = "login_admin_id"
-	StashKeyAdmin          = "admin"
-)
-
 func authenticator(fallbackPath string,
 	exceptionPaths []string) gin.HandlerFunc {
 
