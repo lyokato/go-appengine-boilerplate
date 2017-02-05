@@ -86,7 +86,7 @@ func signInCallback(c *gin.Context) {
 		return
 	}
 
-	admin, err = admins.Create(h.GOON(c), u.ID, u.Email)
+	admin, err = admins.Create(h.GOON(c), u.Email, true)
 	if err != nil {
 		log.Warningf(h.CTX(c), "[admin] failed to create new admin")
 

@@ -2,6 +2,7 @@ package admin
 
 import (
 	h "app/controller_helper"
+	"strconv"
 
 	"app/model/admins"
 
@@ -34,6 +35,25 @@ func showAdminList(c *gin.Context) {
 
 func showAdminDetail(c *gin.Context) {
 	log.Infof(h.CTX(c), "[admin] show_admin_detail")
+
+	admin_id, err := strconv.ParseInt(c.Param("admin_id"), 10, 64)
+	if err != nil {
+		log.Infof(h.CTX(c), "[admin] admin_id is not a integer")
+		h.Render(c, "admin/error.html",
+			pongo2.Context{"message": "invalid parameter"})
+		return
+	}
+
+	admin, err := admins.FindById(h.GOON(c), admin_id)
+	if err != nil {
+		log.Infof(h.CTX(c), "[admin] not found for this admin_id")
+		h.Render(c, "admin/error.html",
+			pongo2.Context{"message": "not found"})
+		return
+	}
+
+	h.Render(c, "admin/detail.html",
+		pongo2.Context{"admin": admin})
 }
 
 func createAdmin(c *gin.Context) {
@@ -42,6 +62,25 @@ func createAdmin(c *gin.Context) {
 
 func updateAdmin(c *gin.Context) {
 	log.Infof(h.CTX(c), "[admin] update_admin")
+
+	admin_id, err := strconv.ParseInt(c.Param("admin_id"), 10, 64)
+	if err != nil {
+		log.Infof(h.CTX(c), "[admin] admin_id is not a integer")
+		h.Render(c, "admin/error.html",
+			pongo2.Context{"message": "invalid parameter"})
+		return
+	}
+
+	admin, err := admins.FindById(h.GOON(c), admin_id)
+	if err != nil {
+		log.Infof(h.CTX(c), "[admin] not found for this admin_id")
+		h.Render(c, "admin/error.html",
+			pongo2.Context{"message": "not found"})
+		return
+	}
+
+	h.Render(c, "admin/update.html",
+		pongo2.Context{"admin": admin})
 }
 
 func deleteAdmin(c *gin.Context) {
