@@ -13,6 +13,14 @@ import (
 	gin "gopkg.in/gin-gonic/gin.v1"
 )
 
+func routeSessionActions(r *gin.RouterGroup) {
+	r.GET("/", showIndexPage)
+	r.GET("/sign_in", signIn)
+	r.GET("/sign_in_cb", signInCallback)
+	r.GET("/sign_out", signOut)
+	r.GET("/sign_out_cb", signOutCallback)
+}
+
 func showIndexPage(c *gin.Context) {
 	log.Infof(h.CTX(c), "[admin] show_index")
 
@@ -35,9 +43,8 @@ func signIn(c *gin.Context) {
 	url, err := user.LoginURL(h.CTX(c), "/admin/sign_in_cb")
 	if err != nil {
 		log.Warningf(h.CTX(c), "[admin] failed to obtain login URL")
-
 		h.Render(c, "admin/error.html",
-			pongo2.Context{})
+			pongo2.Context{"message": "failed to login"})
 		return
 	}
 

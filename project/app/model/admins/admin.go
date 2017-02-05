@@ -1,12 +1,26 @@
 package admins
 
-import "github.com/mjibson/goon"
+import (
+	"github.com/mjibson/goon"
+	"golang.org/x/net/context"
+	"google.golang.org/appengine/datastore"
+)
 
 type Admin struct {
 	AdminId  int64  `datastore:"-" goon:"id"`
 	Username string `datastore:"username"`
 	Email    string `datastore:"email"`
 	Disabled bool   `datastore:"disabled,noindex"`
+}
+
+func All(c context.Context) ([]Admin, error) {
+	q := datastore.NewQuery("Admin")
+	// .Filter().Order()
+	var list []Admin
+	if _, err := q.GetAll(c, &list); err != nil {
+		return nil, err
+	}
+	return list, nil
 }
 
 func FindById(g *goon.Goon, adminId int64) (*Admin, error) {
