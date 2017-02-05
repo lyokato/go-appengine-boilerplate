@@ -27,7 +27,8 @@ func authenticator(fallbackPath string,
 		admin_id, ok := value.(int64)
 
 		if !ok {
-			// save destination
+			// TODO save destination
+
 			log.Infof(ch.CTX(c), "[admin] session not found")
 
 			c.Redirect(http.StatusFound, fallbackPath)
